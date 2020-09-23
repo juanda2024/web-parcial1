@@ -217,9 +217,18 @@ function lecturaEventosHTTP(url_inventario) {
 
                         const pop1 = document.createElement("div");
                         pop1.className = "modal-content row";
+                        pop1.style.width = "600px";
+
+                        const div0 = document.createElement("div");
+                        div0.className = "row"
+                        div0.style.borderBottom = "1px solid rgb(224, 222, 222)";
+
+                        const cl0 = document.createElement("div");
+                        cl0.className = "col"
 
                         const div1 = document.createElement("div");
                         div1.className = "row"
+                        div1.style.borderBottom = "1px solid rgb(224, 222, 222)";
 
                         const cl1 = document.createElement("div");
                         cl1.className = "col"
@@ -229,18 +238,37 @@ function lecturaEventosHTTP(url_inventario) {
 
                         const cl2 = document.createElement("div");
                         cl2.className = "col"
-                        cl2.style.display = "flex";
-                        cl2.style.justifyContent = "flex-end";
-                        cl2.style.alignItems = "flex-end";
+                        cl2.style.paddingTop = "15px";
+
+                        const div3 = document.createElement("div");
+                        div3.className = "row"
+
+                        const cl3 = document.createElement("div");
+                        cl3.className = "col"
+                        cl3.style.display = "flex";
+                        cl3.style.justifyContent = "flex-end";
+                        cl3.style.alignItems = "flex-end";
+
+                        const div4 = document.createElement("div");
+                        div4.className = "row"
+
+                        const cl4 = document.createElement("div");
+                        cl4.className = "col"
+                        cl4.style.display = "flex";
+                        cl4.style.justifyContent = "flex-end";
+                        cl4.style.alignItems = "flex-end";
+                        cl4.style.paddingTop = "8px"
 
                         const span = document.createElement("span");
                         span.className = "close";
-                        span.textContent = "X";
+                        span.textContent = "x";
 
                         const h3 = document.createElement("h3");
                         h3.textContent = "Cancel the order";
 
                         const p1 = document.createElement("p");
+                        p1.style.fontSize = "20px";
+                        p1.style.paddingTop = "20px";
                         p1.textContent = "Are you sure about cancelling the order?";
 
                         const btn_cancelar = document.createElement("button");
@@ -249,29 +277,33 @@ function lecturaEventosHTTP(url_inventario) {
                         btn_cancelar.textContent = "Yes, I want to cancel the order.";
                         btn_cancelar.style.width = "250px";
 
-
                         btn_cancelar.addEventListener("click", function () { cancelarCompras(); salirPopup() })
-
-                        const div_divider = document.createElement("div");
-                        div_divider.className = "divider";
 
                         const btn_confirmar = document.createElement("button");
                         btn_confirmar.type = "button"
                         btn_confirmar.className = "btn btn_cancel";
                         btn_confirmar.textContent = "No, I want to continue adding products";
-                        btn_confirmar.style.width = "400px";
+                        btn_confirmar.style.width = "320px";
 
                         btn_confirmar.addEventListener("click", function () { salirPopup() })
 
-                        cl1.appendChild(span);
-                        cl1.appendChild(h3);
+                        cl0.appendChild(span);
+                        cl0.appendChild(h3);
                         cl1.appendChild(p1);
-                        cl2.appendChild(btn_cancelar);
-                        cl2.appendChild(btn_confirmar);
+                        cl3.appendChild(btn_cancelar);
+                        cl4.appendChild(btn_confirmar);
 
+                        div3.appendChild(cl3);
+                        div4.appendChild(cl4);
+
+                        cl2.appendChild(div3);
+                        cl2.appendChild(div4);
+
+                        div0.appendChild(cl0);
                         div1.appendChild(cl1);
                         div2.appendChild(cl2);
 
+                        pop1.appendChild(div0);
                         pop1.appendChild(div1);
                         pop1.appendChild(div2);
 
@@ -305,11 +337,13 @@ function lecturaEventosHTTP(url_inventario) {
                         ocultarCartas();
                         total_dinero_cuenta = 0;
                         productos_carrito = [];
+                        document.getElementById("cantidadCarrito").textContent = "0 items";
                     }
 
                     function confirmarOrden() {
                         ocultarCartas();
                         total_dinero_cuenta = 0;
+                        document.getElementById("cantidadCarrito").textContent = "0 items";
                         for (let i = 0; i < productos_carrito.length; i++) {
                             console.log(productos_carrito[i]);
                             console.log("- - - - - - - - - -")
