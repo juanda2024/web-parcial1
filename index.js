@@ -96,11 +96,7 @@ function lecturaEventosHTTP(url_inventario) {
 
                     function cargarCarrito() {
 
-                        console.log(productos_carrito);
-
                         document.getElementById("detalle_carrito").hidden = false;
-
-                        console.log("entro");
 
                         var tipo = document.getElementById("texto_tipo_actual");
                         tipo.textContent = "Order detail";
@@ -198,6 +194,9 @@ function lecturaEventosHTTP(url_inventario) {
                         btn_confirmar.className = "btn btn_confirm";
                         btn_confirmar.textContent = "Confirm order";
 
+                        btn_cancelar.addEventListener("click", function () { popup() });
+                        btn_confirmar.addEventListener("click", function () { confirmarOrden() });
+
                         div_botones.appendChild(btn_cancelar);
                         div_botones.appendChild(div_divider);
                         div_botones.appendChild(btn_confirmar);
@@ -209,6 +208,113 @@ function lecturaEventosHTTP(url_inventario) {
 
                         document.getElementById("detalle_carrito").appendChild(row2);
 
+                    }
+
+                    function popup() {
+                        const popup = document.createElement("div");
+                        popup.className = "modal";
+                        popup.id = "myModal";
+
+                        const pop1 = document.createElement("div");
+                        pop1.className = "modal-content row";
+
+                        const div1 = document.createElement("div");
+                        div1.className = "row"
+
+                        const cl1 = document.createElement("div");
+                        cl1.className = "col"
+
+                        const div2 = document.createElement("div");
+                        div2.className = "row"
+
+                        const cl2 = document.createElement("div");
+                        cl2.className = "col"
+                        cl2.style.display = "flex";
+                        cl2.style.justifyContent = "flex-end";
+                        cl2.style.alignItems = "flex-end";
+
+                        const span = document.createElement("span");
+                        span.className = "close";
+                        span.textContent = "X";
+
+                        const h3 = document.createElement("h3");
+                        h3.textContent = "Cancel the order";
+
+                        const p1 = document.createElement("p");
+                        p1.textContent = "Are you sure about cancelling the order?";
+
+                        const btn_cancelar = document.createElement("button");
+                        btn_cancelar.type = "button"
+                        btn_cancelar.className = "btn btn_confirm";
+                        btn_cancelar.textContent = "Yes, I want to cancel the order.";
+                        btn_cancelar.style.width = "250px";
+
+
+                        btn_cancelar.addEventListener("click", function () { cancelarCompras(); salirPopup() })
+
+                        const div_divider = document.createElement("div");
+                        div_divider.className = "divider";
+
+                        const btn_confirmar = document.createElement("button");
+                        btn_confirmar.type = "button"
+                        btn_confirmar.className = "btn btn_cancel";
+                        btn_confirmar.textContent = "No, I want to continue adding products";
+                        btn_confirmar.style.width = "400px";
+
+                        btn_confirmar.addEventListener("click", function () { salirPopup() })
+
+                        cl1.appendChild(span);
+                        cl1.appendChild(h3);
+                        cl1.appendChild(p1);
+                        cl2.appendChild(btn_cancelar);
+                        cl2.appendChild(btn_confirmar);
+
+                        div1.appendChild(cl1);
+                        div2.appendChild(cl2);
+
+                        pop1.appendChild(div1);
+                        pop1.appendChild(div2);
+
+                        popup.appendChild(pop1);
+
+                        document.getElementById("detalle_popup").appendChild(popup);
+
+                        var modal = document.getElementById("myModal");
+
+                        var spanF = document.getElementsByClassName("close")[0];
+
+                        modal.style.display = "block";
+
+                        spanF.onclick = function () {
+                            modal.style.display = "none";
+                        }
+
+                        window.onclick = function (event) {
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                            }
+                        }
+
+                        function salirPopup() {
+                            spanF.click();
+                        }
+
+                    }
+
+                    function cancelarCompras() {
+                        ocultarCartas();
+                        total_dinero_cuenta = 0;
+                        productos_carrito = [];
+                    }
+
+                    function confirmarOrden() {
+                        ocultarCartas();
+                        total_dinero_cuenta = 0;
+                        for (let i = 0; i < productos_carrito.length; i++) {
+                            console.log(productos_carrito[i]);
+                            console.log("- - - - - - - - - -")
+                        }
+                        productos_carrito = [];
                     }
 
                     function ocultarCartas() {
