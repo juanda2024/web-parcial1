@@ -70,7 +70,10 @@ function lecturaEventosHTTP(url_inventario) {
                 var categorias = JSON.parse(req_inventario.response);
 
                 var carrito = document.getElementById("carrito");
-                carrito.addEventListener("click", function () { ocultarCartas(); cargarCarrito() })
+                carrito.addEventListener("click", function () {
+                    ocultarCartas();
+                    cargarCarrito();
+                });
 
                 // Se realiza la lectura de las transacciones encontradas en la lectura por HTTP
                 for (var categoria in categorias) {
@@ -86,7 +89,10 @@ function lecturaEventosHTTP(url_inventario) {
                     var nueva = new Categoria(nombre_categoria_actual, productos_categoria_actual);
                     categorias.push(nueva);
 
-                    categoria_nueva.addEventListener("click", function () { ocultarCartas(); cargarCartas(categoria_nueva.textContent) })
+                    categoria_nueva.addEventListener("click", function () {
+                        ocultarCartas();
+                        cargarCartas(categoria_nueva.textContent);
+                    });
 
 
                     const contenido_nav = document.querySelector(".nav");
@@ -181,7 +187,7 @@ function lecturaEventosHTTP(url_inventario) {
                         div_botones.className = "col opciones_usuario";
 
                         const btn_cancelar = document.createElement("button");
-                        btn_cancelar.type = "button"
+                        btn_cancelar.type = "button";
                         btn_cancelar.className = "btn btn_cancel";
                         btn_cancelar.textContent = "Cancel";
 
@@ -190,12 +196,16 @@ function lecturaEventosHTTP(url_inventario) {
 
 
                         const btn_confirmar = document.createElement("button");
-                        btn_confirmar.type = "button"
+                        btn_confirmar.type = "button";
                         btn_confirmar.className = "btn btn_confirm";
                         btn_confirmar.textContent = "Confirm order";
 
-                        btn_cancelar.addEventListener("click", function () { popup() });
-                        btn_confirmar.addEventListener("click", function () { confirmarOrden() });
+                        btn_cancelar.addEventListener("click", function () {
+                            popup();
+                        });
+                        btn_confirmar.addEventListener("click", function () {
+                            confirmarOrden();
+                        });
 
                         div_botones.appendChild(btn_cancelar);
                         div_botones.appendChild(div_divider);
@@ -220,44 +230,44 @@ function lecturaEventosHTTP(url_inventario) {
                         pop1.style.width = "600px";
 
                         const div0 = document.createElement("div");
-                        div0.className = "row"
+                        div0.className = "row";
                         div0.style.borderBottom = "1px solid rgb(224, 222, 222)";
 
                         const cl0 = document.createElement("div");
-                        cl0.className = "col"
+                        cl0.className = "col";
 
                         const div1 = document.createElement("div");
-                        div1.className = "row"
+                        div1.className = "row";
                         div1.style.borderBottom = "1px solid rgb(224, 222, 222)";
 
                         const cl1 = document.createElement("div");
-                        cl1.className = "col"
+                        cl1.className = "col";
 
                         const div2 = document.createElement("div");
-                        div2.className = "row"
+                        div2.className = "row";
 
                         const cl2 = document.createElement("div");
-                        cl2.className = "col"
+                        cl2.className = "col";
                         cl2.style.paddingTop = "15px";
 
                         const div3 = document.createElement("div");
-                        div3.className = "row"
+                        div3.className = "row";
 
                         const cl3 = document.createElement("div");
-                        cl3.className = "col"
+                        cl3.className = "col";
                         cl3.style.display = "flex";
                         cl3.style.justifyContent = "flex-end";
                         cl3.style.alignItems = "flex-end";
 
                         const div4 = document.createElement("div");
-                        div4.className = "row"
+                        div4.className = "row";
 
                         const cl4 = document.createElement("div");
-                        cl4.className = "col"
+                        cl4.className = "col";
                         cl4.style.display = "flex";
                         cl4.style.justifyContent = "flex-end";
                         cl4.style.alignItems = "flex-end";
-                        cl4.style.paddingTop = "8px"
+                        cl4.style.paddingTop = "8px";
 
                         const span = document.createElement("span");
                         span.className = "close";
@@ -272,12 +282,15 @@ function lecturaEventosHTTP(url_inventario) {
                         p1.textContent = "Are you sure about cancelling the order?";
 
                         const btn_cancelar = document.createElement("button");
-                        btn_cancelar.type = "button"
+                        btn_cancelar.type = "button";
                         btn_cancelar.className = "btn btn_confirm";
                         btn_cancelar.textContent = "Yes, I want to cancel the order.";
                         btn_cancelar.style.width = "250px";
 
-                        btn_cancelar.addEventListener("click", function () { cancelarCompras(); salirPopup() })
+                        btn_cancelar.addEventListener("click", function () {
+                            cancelarCompras();
+                            salirPopup();
+                        });
 
                         const btn_confirmar = document.createElement("button");
                         btn_confirmar.type = "button"
@@ -285,7 +298,9 @@ function lecturaEventosHTTP(url_inventario) {
                         btn_confirmar.textContent = "No, I want to continue adding products";
                         btn_confirmar.style.width = "320px";
 
-                        btn_confirmar.addEventListener("click", function () { salirPopup() })
+                        btn_confirmar.addEventListener("click", function () {
+                            salirPopup()
+                        })
 
                         cl0.appendChild(span);
                         cl0.appendChild(h3);
@@ -439,8 +454,7 @@ function lecturaEventosHTTP(url_inventario) {
 
                             carta_nueva.addEventListener("click", function () {
                                 aumentarCarrito(new productos_ordenados(carta_nueva.textContent.split(".")[0],
-                                    carta_nueva.textContent.split("$")[0].replace(carta_nueva.textContent.split(".")[0] + ".", ""),
-                                    (carta_nueva.textContent.split("$")[1].split(".")[0] + "." + carta_nueva.textContent.split("$")[1].split(".")[1].substring(0, 2))))
+                                    carta_nueva.textContent.split("$")[0].replace(carta_nueva.textContent.split(".")[0] + ".", ""), (carta_nueva.textContent.split("$")[1].split(".")[0] + "." + carta_nueva.textContent.split("$")[1].split(".")[1].substring(0, 2))))
                             })
 
                             function aumentarCarrito(nueva_orden) {
@@ -469,8 +483,7 @@ function lecturaEventosHTTP(url_inventario) {
                     categoria_seleccionada_actualmente = categoria_nueva.textContent;;
                 }
                 resolve(req_inventario.response);
-            }
-            else {
+            } else {
                 reject(Error(req_inventario.statusText));
             }
         };
