@@ -21,8 +21,15 @@ body {
   border-bottom: 1px solid rgb(224, 222, 222);
 }
 
+.banner .logo {
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  align-items: center;
+  height: 100px;
+}
+
 .banner .logo .h5 {
-  text-align: center;
   color: black;
   font-family: "parcial_font"; 
   font-weight: 400;
@@ -33,16 +40,13 @@ body {
 .banner .carrito
 {
   display: flex;
-  align-content: flex-end;
-  align-content: flex-end;
-  align-items: flex-end;
-
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .banner .carrito .p
 {
   padding-left: 15px;
-  position: center;
 }
 
 
@@ -59,8 +63,6 @@ body {
 }
 
 .main .imagen_negocio img {
-  padding-top: 20px;
-  padding-bottom: 20px;
   height: 400px;
 }
 
@@ -91,7 +93,16 @@ padding-left: 40px;
 
 .main .detalle_comidas .card
 {
-  padding-top: 20px;
+  float: left;
+  margin: 12px;
+  width: 18rem;
+  height: 33rem;
+}
+
+.main .detalle_comidas .card img
+{
+  height: 160px;
+  width: 286px;
 }
 
 .main .detalle_comidas .card .price
