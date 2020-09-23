@@ -1,7 +1,6 @@
 @font-face {
     font-family: 'parcial_font';
-    src: url('myfont.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-     url('./img/Satisfy-Regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+    src: url('./img/Satisfy-Regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
   }
 
 html,
@@ -95,14 +94,14 @@ padding-left: 40px;
 {
   float: left;
   margin: 12px;
-  width: 18rem;
+  width: 17rem;
   height: 33rem;
 }
 
 .main .detalle_comidas .card img
 {
   height: 160px;
-  width: 286px;
+  width: 270px;
 }
 
 .main .detalle_comidas .card .price
@@ -115,6 +114,39 @@ padding-left: 40px;
   background-color: #343a42;
   border-color: #343a42;
   color: #e2e4e5;
+}
+
+.main .detalle_carrito .opciones_usuario
+{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 85px;
+}
+
+.main .detalle_carrito .opciones_usuario .btn
+{
+  display: flex;
+}
+
+.main .detalle_carrito .total_carrito
+{
+  font-weight: bold;
+  color: black;
+}
+
+.main .detalle_carrito .btn_cancel
+{
+  background-color:#f7575a;
+  border-color: green;
+  color: black;
+}
+
+.main .detalle_carrito .btn_confirm
+{
+  background-color: #f2e9de;
+  border-color: black;
+  color: black;
 }
 
 .footer {
@@ -131,4 +163,8 @@ padding-left: 40px;
   color: #343a42;
   font-size: 12px;
   font-weight: bold;
+}
+
+.divider{
+  padding-left: 5px;
 }
